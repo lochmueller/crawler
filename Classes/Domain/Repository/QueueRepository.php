@@ -320,10 +320,8 @@ class QueueRepository extends Repository implements LoggerAwareInterface
 
     /**
      * Get the last processed entries
-     *
-     * @param int $limit
      */
-    public function getLastProcessedEntries($limit = 100): array
+    public function getLastProcessedEntries(int $limit = 100): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
         $statement = $queryBuilder

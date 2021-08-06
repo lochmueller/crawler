@@ -164,13 +164,13 @@ class CrawlerControllerTest extends FunctionalTestCase
         );
 
         self::assertEquals(
-            $configurationsForBranch,
             [
+                'default',
                 'Not hidden or deleted',
                 'Not hidden or deleted - uid 5',
                 'Not hidden or deleted - uid 6',
-                'default',
-            ]
+            ],
+            $configurationsForBranch
         );
     }
 
