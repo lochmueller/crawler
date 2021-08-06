@@ -43,7 +43,19 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v2
-      - run: php --version
+
+      - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
+        run: |
+          composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
+          git checkout composer.json
+          ln -nfs .Build/vendor/typo3/cms/typo3 typo3
+
+      - name: Functional Tests
+        run: |
+          export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
+          .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional --process-isolation
+        env:
+          typo3DatabaseDriver=pdo_sqlite
 
   MariaDB:
     name: MariaDB
@@ -85,7 +97,6 @@ jobs:
           typo3DatabaseName: typo3
           typo3DatabasePassword: root
           typo3DatabaseUsername: root
-
 
   MySQL:
     name: MySQL
