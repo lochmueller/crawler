@@ -47,35 +47,35 @@ jobs:
           typo3DatabasePassword: root
           typo3DatabaseUsername: root
 
-  SQLite:
-    name: SQLite
-    runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '7.4' ]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+ # SQLite:
+ #   name: SQLite
+ #   runs-on: ubuntu-20.04
+ #   strategy:
+ #     fail-fast: false
+ #     matrix:
+ #       php: [ '7.4' ]
+ #   steps:
+ #     - name: Checkout
+ #       uses: actions/checkout@v2
 
-      - name: Set up PHP Version ${{ matrix.php }}
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2
+ #     - name: Set up PHP Version ${{ matrix.php }}
+ #       uses: shivammathur/setup-php@v2
+ #       with:
+ #         php-version: ${{ matrix.php }}
+ #         tools: composer:v2
 
-      - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
-        run: |
-          composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
-          git checkout composer.json
-          ln -nfs .Build/vendor/typo3/cms/typo3 typo3
+ #     - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
+ #       run: |
+ #         composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
+ #         git checkout composer.json
+ #         ln -nfs .Build/vendor/typo3/cms/typo3 typo3
 
-      - name: Functional Tests
-        run: |
-          export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
-          .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional --process-isolation
-        env:
-          typo3DatabaseDriver=pdo_sqlite
+#      - name: Functional Tests
+#        run: |
+#          export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
+#          .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional --process-isolation
+#        env:
+#          typo3DatabaseDriver=pdo_sqlite
 
   MariaDB:
     name: MariaDB
