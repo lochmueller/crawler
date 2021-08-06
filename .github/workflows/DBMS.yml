@@ -68,11 +68,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-#      - name: Set up PHP Version ${{ matrix.php }}
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: ${{ matrix.php }}
-#          tools: composer:v2
+      - name: Set up PHP Version ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
 
 #      - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
 #        run: |
