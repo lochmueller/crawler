@@ -192,7 +192,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
-                $queryBuilder->expr()->neq('process_id', '""'),
+                $queryBuilder->expr()->neq('process_id', "''"),
                 $queryBuilder->expr()->eq('exec_time', 0),
                 $queryBuilder->expr()->lte('scheduled', time())
             )
@@ -212,7 +212,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
-                $queryBuilder->expr()->eq('process_id', '""'),
+                $queryBuilder->expr()->eq('process_id', "''"),
                 $queryBuilder->expr()->eq('exec_time', 0),
                 $queryBuilder->expr()->lte('scheduled', time())
             )

@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
  *
  * @package AOE\Crawler\Tests\Functional\Domain\Repository
  */
-class QueueRepositoryTest extends FunctionalTestCase
+class QueueRepositoryTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
 {
     /**
      * @var array
