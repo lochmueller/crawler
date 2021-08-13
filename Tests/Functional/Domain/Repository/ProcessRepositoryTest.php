@@ -170,7 +170,7 @@ class ProcessRepositoryTest extends FunctionalTestCase
             ['process_id' => '1005', 'system_process_id' => 0],
         ];
 
-        self::assertSame(
+        self::assertEquals(
             $expected,
             $this->subject->getActiveProcessesOlderThanOneHour()
         );
@@ -188,7 +188,7 @@ class ProcessRepositoryTest extends FunctionalTestCase
             ['process_id' => '1005', 'system_process_id' => 0],
         ];
 
-        self::assertSame(
+        self::assertEquals(
             $expected,
             $this->subject->getActiveOrphanProcesses()
         );

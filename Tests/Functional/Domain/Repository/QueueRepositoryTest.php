@@ -310,7 +310,7 @@ class QueueRepositoryTest extends FunctionalTestCase
             '2' => 18,
         ];
 
-        self::assertSame(
+        self::assertEquals(
             $expectedArray,
             $this->subject->getLastProcessedEntriesTimestamps(3)
         );
@@ -416,7 +416,7 @@ class QueueRepositoryTest extends FunctionalTestCase
     public function getAvailableSets(): void
     {
         $availableSets = $this->subject->getAvailableSets();
-        self::assertSame(
+        self::assertEquals(
             [
                 'count_value' => 1,
                 'set_id' => 0,
@@ -438,7 +438,7 @@ class QueueRepositoryTest extends FunctionalTestCase
         $queueRecord = $this->subject->findByQueueId('15');
         self::assertSame(
             12,
-            $queueRecord['scheduled']
+            (int) $queueRecord['scheduled']
         );
     }
 
@@ -525,7 +525,7 @@ class QueueRepositoryTest extends FunctionalTestCase
             $actualArray[] = $record['page_id'];
         }
 
-        self::assertSame(
+        self::assertEquals(
             [1, 3, 5, 2, 4],
             $actualArray
         );
@@ -630,7 +630,7 @@ class QueueRepositoryTest extends FunctionalTestCase
      */
     public function getDuplicateQueueItemsIfExists(bool $enableTimeslot, int $timestamp, int $currentTime, int $pageId, string $parametersHash, array $expected): void
     {
-        self::assertSame(
+        self::assertEquals(
             $expected,
             $this->subject->getDuplicateQueueItemsIfExists($enableTimeslot, $timestamp, $currentTime, $pageId, $parametersHash)
         );

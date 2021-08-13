@@ -187,7 +187,7 @@ class CrawlerControllerTest extends FunctionalTestCase
             'enableTimeslot' => $timeslotActive,
         ]);
 
-        self::assertSame(
+        self::assertEquals(
             $expected,
             $mockedCrawlerController->_call('getDuplicateRowsIfExist', $tstamp, $fieldArray)
         );

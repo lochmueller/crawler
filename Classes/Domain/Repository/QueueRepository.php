@@ -100,7 +100,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
 
-        return $queryBuilder
+        return (int) $queryBuilder
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
@@ -120,7 +120,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
 
-        return $queryBuilder
+        return (int) $queryBuilder
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
@@ -168,7 +168,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
 
-        return $queryBuilder
+        return (int) $queryBuilder
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
@@ -188,7 +188,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
 
-        return $queryBuilder
+        return (int) $queryBuilder
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
@@ -208,7 +208,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
 
-        return $queryBuilder
+        return (int) $queryBuilder
             ->count('*')
             ->from(self::TABLE_NAME)
             ->where(
