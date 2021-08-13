@@ -21,7 +21,7 @@ namespace AOE\Crawler\Tests\Functional\Backend\RequestForm;
 
 use AOE\Crawler\Backend\RequestForm\LogRequestForm;
 use AOE\Crawler\Configuration\ExtensionConfigurationProvider;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

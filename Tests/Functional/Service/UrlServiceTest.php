@@ -21,7 +21,7 @@ namespace AOE\Crawler\Tests\Functional\Service;
 
 use AOE\Crawler\Service\UrlService;
 use AOE\Crawler\Tests\Functional\SiteBasedTestTrait;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Core\Http\Uri;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;

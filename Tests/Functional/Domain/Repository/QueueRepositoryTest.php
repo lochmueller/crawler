@@ -22,7 +22,7 @@ namespace AOE\Crawler\Tests\Functional\Domain\Repository;
 use AOE\Crawler\Domain\Model\Process;
 use AOE\Crawler\Domain\Repository\QueueRepository;
 use AOE\Crawler\Value\QueueFilter;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
  *
  * @package AOE\Crawler\Tests\Functional\Domain\Repository
  */
-class QueueRepositoryTest extends \TYPO3\TestingFramework\Core\Functional\FunctionalTestCase
+class QueueRepositoryTest extends FunctionalTestCase
 {
     /**
      * @var array
