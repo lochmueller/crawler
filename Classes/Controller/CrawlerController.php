@@ -731,7 +731,7 @@ class CrawlerController implements LoggerAwareInterface
                                 if ($recursiveDepth > 0) {
                                     /** @var QueryGenerator $queryGenerator */
                                     $queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
-                                    $pidList = $queryGenerator->getTreeList($lookUpPid, $recursiveDepth, 0, 1);
+                                    $pidList = $queryGenerator->getTreeList($lookUpPid, $recursiveDepth, 0, '1=1');
                                     $pidArray = GeneralUtility::intExplode(',', $pidList);
                                 } else {
                                     $pidArray = [(string) $lookUpPid];
@@ -744,6 +744,7 @@ class CrawlerController implements LoggerAwareInterface
                                 $queryBuilder
                                     ->select($fieldName)
                                     ->from($subpartParams['_TABLE'])
+                                    ->orderBy('uid')
                                     ->where(
                                         $queryBuilder->expr()->in($pidField, $queryBuilder->createNamedParameter($pidArray, Connection::PARAM_INT_ARRAY)),
                                         $where
