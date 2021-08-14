@@ -243,17 +243,17 @@ class QueueRepositoryTest extends FunctionalTestCase
             0 => [
                 'configuration' => 'FirstConfiguration',
                 'unprocessed' => 3,
-                'assignedButUnprocessed' => 0,
+                'assigned_but_unprocessed' => 0,
             ],
             1 => [
                 'configuration' => 'SecondConfiguration',
                 'unprocessed' => 3,
-                'assignedButUnprocessed' => 1,
+                'assigned_but_unprocessed' => 1,
             ],
             2 => [
                 'configuration' => 'ThirdConfiguration',
                 'unprocessed' => 2,
-                'assignedButUnprocessed' => 2,
+                'assigned_but_unprocessed' => 2,
             ],
         ];
 

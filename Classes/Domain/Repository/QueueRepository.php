@@ -228,7 +228,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
         $statement = $queryBuilder
             ->from(self::TABLE_NAME)
-            ->selectLiteral('count(*) as unprocessed', 'sum(case when process_id != \'\' then 1 else 0 end) as assignedButUnprocessed')
+            ->selectLiteral('count(*) as unprocessed', 'sum(case when process_id != \'\' then 1 else 0 end) as assigned_but_unprocessed')
             ->addSelect('configuration')
             ->where(
                 $queryBuilder->expr()->eq('exec_time', 0),
