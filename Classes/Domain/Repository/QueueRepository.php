@@ -228,7 +228,7 @@ class QueueRepository extends Repository implements LoggerAwareInterface
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME);
         $statement = $queryBuilder
             ->from(self::TABLE_NAME)
-            ->selectLiteral('count(*) as unprocessed', 'sum(process_id != \'\') as assignedButUnprocessed')
+            ->selectLiteral('count(*) as unprocessed', 'sum(case when process_id != \'\' then 1 else 0 end) as assignedButUnprocessed')
             ->addSelect('configuration')
             ->where(
                 $queryBuilder->expr()->eq('exec_time', 0),
@@ -673,8 +673,12 @@ class QueueRepository extends Repository implements LoggerAwareInterface
         }
 
         $queryBuilder
-            ->andWhere('NOT exec_time')
-            ->andWhere('NOT process_id')
+            ->andWhere(
+                $queryBuilder->expr()->eq('exec_time', 0)
+            )
+            ->andWhere(
+                $queryBuilder->expr()->eq('process_id', "''")
+            )
             ->andWhere($queryBuilder->expr()->eq('page_id', $queryBuilder->createNamedParameter($pageId, \PDO::PARAM_INT)))
             ->andWhere($queryBuilder->expr()->eq('parameters_hash', $queryBuilder->createNamedParameter($parametersHash, \PDO::PARAM_STR)));
 

@@ -1769,8 +1769,12 @@ class CrawlerController implements LoggerAwareInterface
         }
 
         $queryBuilder
-            ->andWhere('NOT exec_time')
-            ->andWhere('NOT process_id')
+            ->andWhere(
+                $queryBuilder->expr()->eq('exec_time', 0)
+            )
+            ->andWhere(
+                $queryBuilder->expr()->eq('process_id', "''")
+            )
             ->andWhere($queryBuilder->expr()->eq('page_id', $queryBuilder->createNamedParameter($fieldArray['page_id'], PDO::PARAM_INT)))
             ->andWhere($queryBuilder->expr()->eq('parameters_hash', $queryBuilder->createNamedParameter($fieldArray['parameters_hash'], PDO::PARAM_STR)));
 
