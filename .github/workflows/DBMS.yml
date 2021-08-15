@@ -48,6 +48,7 @@ jobs:
       - name: Functional Tests
         run: |
           export "FUNCTIONAL_XML"=.Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml
+          rm -rf .Build/Web/typo3temp/
           .Build/bin/phpunit --whitelist Classes --coverage-clover=functional-coverage.clover --colors -c $FUNCTIONAL_XML Tests/Functional --process-isolation
         env:
           typo3DatabaseDriver: pdo_pgsql
