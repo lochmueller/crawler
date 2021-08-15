@@ -53,6 +53,7 @@ jobs:
         env:
           typo3DatabaseDriver: pdo_pgsql
           typo3DatabaseHost: 127.0.0.1
+          typo3DatabaseName: typo3
           typo3DatabasePassword: root
           typo3DatabaseUsername: root
 
